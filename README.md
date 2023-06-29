@@ -1,6 +1,7 @@
 # movie_app_riverpod
 
 A Flutter practice.
+From [tmdb_movie_app_riverpod](https://github.com/bizz84/tmdb_movie_app_riverpod/tree/main)
 
 ## Getting Started
 
