@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// final moviesSearchTextProvider = StateProvider.autoDispose((ref) => TextEditingController(text: ''));
-final moviesSearchTextProvider = StateProvider<String>((ref) => '');
+import 'movies_provider.dart';
+
 class MoviesSearchBar extends ConsumerWidget {
   const MoviesSearchBar({super.key});
 
@@ -43,8 +43,7 @@ class MoviesSearchBar extends ConsumerWidget {
                         FocusManager.instance.primaryFocus?.unfocus();
                       },
                       onChanged: (text) => ref
-                          .read(moviesSearchTextProvider.notifier)
-                          .state = text,
+                          .read(moviesSearchTextProvider.notifier).change(text),
                     ),
                   ),
                 ),

@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_app_riverpod/src/features/movies/data/movies_repository.dart';
 import 'package:movie_app_riverpod/src/features/movies/model/tmdb_movie.dart';
+import 'package:movie_app_riverpod/src/features/movies/presentation/movie_details/movie_controller.dart';
 import 'package:movie_app_riverpod/src/features/movies/presentation/movies/movie_list_tile.dart';
 import 'package:movie_app_riverpod/src/features/movies/presentation/movies/movie_list_tile_shimmer.dart';
 
@@ -17,6 +17,7 @@ class MovieDetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     if (movie != null) {
       return Scaffold(
         appBar: AppBar(
@@ -29,7 +30,8 @@ class MovieDetailsScreen extends ConsumerWidget {
         ),
       );
     } else {
-      final movieAsync = ref.watch(movieProvider(movieId: movieId));
+      final movieAsync = ref.watch(movieControllerProvider(movieId));
+
       return movieAsync.when(
         error: (err, stack) => Scaffold(
           appBar: AppBar(
@@ -60,5 +62,4 @@ class MovieDetailsScreen extends ConsumerWidget {
       );
     }
   }
-
 }
