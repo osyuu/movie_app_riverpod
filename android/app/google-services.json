@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "678780282444",
+    "project_id": "riverpodmovie-75f0b",
+    "storage_bucket": "riverpodmovie-75f0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678780282444:android:168608e006452c1a49f6e9",
+        "android_client_info": {
+          "package_name": "com.example.movie_app_riverpod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678780282444-1vrg38ur2i7gn6oodaf8u3k0jd1jbljj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS6dhbCv0m7-FI-9qd266-v33I7pfHmeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678780282444-1vrg38ur2i7gn6oodaf8u3k0jd1jbljj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

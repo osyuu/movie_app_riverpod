@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>678780282444-7osal40ubravu20dm03t7qvqffmbraaf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.678780282444-7osal40ubravu20dm03t7qvqffmbraaf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDago5G13gfTInrELZ6QEkj4mk7zGRPbiQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>678780282444</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.movieAppRiverpod</string>
+	<key>PROJECT_ID</key>
+	<string>riverpodmovie-75f0b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>riverpodmovie-75f0b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:678780282444:ios:0a1696eb5b1955b749f6e9</string>
+</dict>
+</plist>
