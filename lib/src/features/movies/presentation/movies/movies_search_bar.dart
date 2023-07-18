@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'movies_provider.dart';
+import 'movies_controller.dart';
 
 class MoviesSearchBar extends ConsumerWidget {
   const MoviesSearchBar({super.key});

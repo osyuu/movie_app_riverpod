@@ -13,6 +13,7 @@ enum AppRoute {
   movies,
   movie,
   favorites,
+  favorite,
 }
 
 // private navigators
@@ -62,6 +63,20 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                 key: state.pageKey,
                 child: const FavoritesScreen()
             ),
+              routes: [
+                GoRoute(
+                  path: ':id',
+                  name: AppRoute.favorite.name,
+                  pageBuilder: (context, state) {
+                    final id = int.parse(state.pathParameters['id'] as String);
+                    final movie = state.extra as TMDBMovie?;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: MovieDetailsScreen(movieId: id, movie: movie),
+                    );
+                  },
+                ),
+              ]
           ),
         ]
       )

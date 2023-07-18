@@ -6,7 +6,7 @@ part of 'movie_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$movieControllerHash() => r'e6be34d71eef5bc2889bafa3204e9c75a308c46b';
+String _$movieControllerHash() => r'5030391db75af32d060a27a96eacc0d4640a200b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -33,7 +33,7 @@ abstract class _$MovieController
     extends BuildlessAutoDisposeAsyncNotifier<TMDBMovie> {
   late final int movieId;
 
-  Future<TMDBMovie> build(
+  FutureOr<TMDBMovie> build(
     int movieId,
   );
 }
@@ -115,7 +115,7 @@ class MovieControllerProvider
   }
 
   @override
-  Future<TMDBMovie> runNotifierBuild(
+  FutureOr<TMDBMovie> runNotifierBuild(
     covariant MovieController notifier,
   ) {
     return notifier.build(

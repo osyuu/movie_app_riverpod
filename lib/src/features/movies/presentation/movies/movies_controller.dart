@@ -6,7 +6,7 @@ import 'package:movie_app_riverpod/src/features/movies/data/movies_repository.da
 import 'package:movie_app_riverpod/src/features/movies/model/tmdb_movie.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'movies_provider.g.dart';
+part 'movies_controller.g.dart';
 
 // final moviesSearchTextProvider = StateProvider.autoDispose((ref) => TextEditingController(text: ''));
 @riverpod
@@ -23,19 +23,10 @@ class MoviesSearchText extends _$MoviesSearchText {
 
 @riverpod
 class MoviesController extends _$MoviesController {
-  @override
-  FutureOr<List<TMDBMovie>> build({
+  Future<List<TMDBMovie>> fetchMovies({
     required MoviesPagination pagination,
   }) async {
-    final result = await fetchMovies(pagination: pagination);
-    return result.value!;
-  }
-
-  Future<AsyncValue<List<TMDBMovie>>> fetchMovies({
-    required MoviesPagination pagination,
-  }) async {
-    final moviesRepo = ref.read(moviesRepositoryProvider);
-    state = const AsyncLoading();
+    final moviesRepo = ref.watch(moviesRepositoryProvider);
     final cancelToken = CancelToken();
     // When a page is no-longer used, keep it in the cache.
     final link = ref.keepAlive();
@@ -57,24 +48,33 @@ class MoviesController extends _$MoviesController {
     ref.onResume(() {
       timer?.cancel();
     });
+    List<TMDBMovie> result;
     if (pagination.query.isEmpty) {
       // use non-search endpoint
-      state = await AsyncValue.guard(() => moviesRepo.nowPlayingMovies(
+      result = await moviesRepo.nowPlayingMovies(
         page: pagination.page,
         cancelToken: cancelToken,
-      ));
+      );
     } else {
       // Debounce the request. By having this delay, consumers can subscribe to
       // different parameters. In which case, this request will be aborted.
       await Future.delayed(const Duration(milliseconds: 500));
       if (cancelToken.isCancelled) throw AbortedException();
 
-      state = await AsyncValue.guard(() => moviesRepo.searchMovies(
+      result = await moviesRepo.searchMovies(
         page: pagination.page,
         query: pagination.query,
         cancelToken: cancelToken,
-      ));
+      );
     }
-    return state;
+    return result;
   }
+
+  @override
+  FutureOr<List<TMDBMovie>> build({
+    required MoviesPagination pagination,
+  }) async {
+    return await fetchMovies(pagination: pagination);
+  }
+
 }

@@ -2,12 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app_riverpod/src/features/favorites/presentation/favorite_movies_controller.dart';
 import 'package:movie_app_riverpod/src/features/movies/data/movies_pagination.dart';
 import 'package:movie_app_riverpod/src/features/movies/presentation/movies/movie_list_tile_shimmer.dart';
 import 'package:movie_app_riverpod/src/route/app_router.dart';
 
 import 'movie_list_tile.dart';
-import 'movies_provider.dart';
+import 'movies_controller.dart';
 import 'movies_search_bar.dart';
 
 class MoviesSearchScreen extends ConsumerWidget {
@@ -73,6 +74,9 @@ class MoviesSearchScreen extends ConsumerWidget {
                           extra: movie,
                           pathParameters: {'id': movie.id.toString()},
                         ),
+                        action1: (BuildContext context) {
+                          ref.read(favoriteMoviesControllerProvider.notifier).addFavorite(movie);
+                        },
                       );
                     }
                   );

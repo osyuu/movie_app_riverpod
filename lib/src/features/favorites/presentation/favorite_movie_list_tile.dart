@@ -1,38 +1,44 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:movie_app_riverpod/src/common_widgets/movie_poster.dart';
 import 'package:movie_app_riverpod/src/common_widgets/top_gradient.dart';
-import 'package:movie_app_riverpod/src/features/movies/model/tmdb_movie.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:movie_app_riverpod/src/features/favorites/model/favorite_movie.dart';
 
-class MovieListTile extends StatelessWidget {
-  const MovieListTile({
+class FavoriteMovieListTile extends StatelessWidget {
+  const FavoriteMovieListTile({
     super.key,
-    required this.movie,
-    // debugging hint to show the tile index
-    this.debugIndex,
+    required this.favorite,
+    this.debugUuid,
     this.onPressed,
+    required this.onDismissed,
     this.action1,
   });
-  final TMDBMovie movie;
-  final int? debugIndex;
+  final String? debugUuid;
+  final FavoriteMovie favorite;
   final VoidCallback? onPressed;
+  final VoidCallback onDismissed;
   final ValueSetter<BuildContext>? action1;
 
   @override
   Widget build(BuildContext context) {
+    final movie = favorite.movie;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Slidable(
+        key: Key('favorite_movie_list_tile_${favorite.uuid}'),
         endActionPane: ActionPane(
+          dismissible: DismissiblePane(
+            onDismissed: onDismissed,
+          ),
           motion: const ScrollMotion(),
           children: [
             SlidableAction(
               onPressed: action1,
               backgroundColor: Colors.orangeAccent,
               foregroundColor: Colors.yellow,
-              icon: Icons.star,
-              label: 'Favorite',
+              icon: Icons.delete,
+              label: 'Delete',
             ),
           ],
         ),
@@ -47,13 +53,13 @@ class MovieListTile extends StatelessWidget {
                     height: MoviePoster.height,
                     child: MoviePoster(imagePath: movie.posterPath),
                   ),
-                  if (debugIndex != null) ...[
+                  if (debugUuid != null) ...[
                     const Positioned.fill(child: TopGradient()),
                     Positioned(
                       left: 8,
                       top: 8,
                       child: Text(
-                        '$debugIndex',
+                        '$debugUuid',
                         style: const TextStyle(color: Colors.white, fontSize: 14),
                       ),
                     ),

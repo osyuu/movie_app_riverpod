@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movies_provider.dart';
+part of 'movies_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -22,7 +22,7 @@ final moviesSearchTextProvider =
 );
 
 typedef _$MoviesSearchText = AutoDisposeNotifier<String>;
-String _$moviesControllerHash() => r'ca2fbfecb58a5d273655758bfc27b827d10667d5';
+String _$moviesControllerHash() => r'd4cb30bb26b618794a517af28b92282e5bfe79ba';
 
 /// Copied from Dart SDK
 class _SystemHash {

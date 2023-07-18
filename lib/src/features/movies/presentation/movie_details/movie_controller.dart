@@ -9,21 +9,16 @@ part 'movie_controller.g.dart';
 
 @riverpod
 class MovieController extends _$MovieController {
-  @override
-  Future<TMDBMovie> build(int movieId) async {
-    final moviesRepo = ref.read(moviesRepositoryProvider);
-    state = const AsyncLoading();
-    final cancelToken = ref.cancelToken();
-    state = await AsyncValue.guard(() => moviesRepo.movie(movieId: movieId, cancelToken: cancelToken));
-    return state.value!;
-  }
-
-  Future<void> movie({
+  Future<TMDBMovie> movie({
     required int movieId,
   }) async {
-    final moviesRepo = ref.read(moviesRepositoryProvider);
-    state = const AsyncLoading();
+    final moviesRepo = ref.watch(moviesRepositoryProvider);
     final cancelToken = ref.cancelToken();
-    state = await AsyncValue.guard(() => moviesRepo.movie(movieId: movieId, cancelToken: cancelToken));
+    return await moviesRepo.movie(movieId: movieId, cancelToken: cancelToken);
+  }
+
+  @override
+  FutureOr<TMDBMovie> build(int movieId) async {
+    return await movie(movieId: movieId);
   }
 }
