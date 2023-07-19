@@ -2,13 +2,12 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:movie_app_riverpod/src/features/movies/data/movies_pagination.dart';
-import 'package:movie_app_riverpod/src/features/movies/data/movies_repository.dart';
-import 'package:movie_app_riverpod/src/features/movies/model/tmdb_movie.dart';
+import 'package:movie_app_riverpod/src/features/movies/domain/entities/tmdb_movie_entity.dart';
+import 'package:movie_app_riverpod/src/features/movies/domain/movies_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'movies_controller.g.dart';
 
-// final moviesSearchTextProvider = StateProvider.autoDispose((ref) => TextEditingController(text: ''));
 @riverpod
 class MoviesSearchText extends _$MoviesSearchText {
   @override
@@ -23,7 +22,7 @@ class MoviesSearchText extends _$MoviesSearchText {
 
 @riverpod
 class MoviesController extends _$MoviesController {
-  Future<List<TMDBMovie>> fetchMovies({
+  Future<List<TMDBMovieEntity>> fetchMovies({
     required MoviesPagination pagination,
   }) async {
     final moviesRepo = ref.watch(moviesRepositoryProvider);
@@ -48,7 +47,7 @@ class MoviesController extends _$MoviesController {
     ref.onResume(() {
       timer?.cancel();
     });
-    List<TMDBMovie> result;
+    List<TMDBMovieEntity> result;
     if (pagination.query.isEmpty) {
       // use non-search endpoint
       result = await moviesRepo.nowPlayingMovies(
@@ -71,7 +70,7 @@ class MoviesController extends _$MoviesController {
   }
 
   @override
-  FutureOr<List<TMDBMovie>> build({
+  FutureOr<List<TMDBMovieEntity>> build({
     required MoviesPagination pagination,
   }) async {
     return await fetchMovies(pagination: pagination);

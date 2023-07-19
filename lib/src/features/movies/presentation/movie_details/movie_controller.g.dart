@@ -6,7 +6,7 @@ part of 'movie_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$movieControllerHash() => r'5030391db75af32d060a27a96eacc0d4640a200b';
+String _$movieControllerHash() => r'b94962921b111914f35e605dc0debc77dbc1ee18';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$MovieController
-    extends BuildlessAutoDisposeAsyncNotifier<TMDBMovie> {
+    extends BuildlessAutoDisposeAsyncNotifier<TMDBMovieEntity> {
   late final int movieId;
 
-  FutureOr<TMDBMovie> build(
+  FutureOr<TMDBMovieEntity> build(
     int movieId,
   );
 }
@@ -43,7 +43,7 @@ abstract class _$MovieController
 const movieControllerProvider = MovieControllerFamily();
 
 /// See also [MovieController].
-class MovieControllerFamily extends Family<AsyncValue<TMDBMovie>> {
+class MovieControllerFamily extends Family<AsyncValue<TMDBMovieEntity>> {
   /// See also [MovieController].
   const MovieControllerFamily();
 
@@ -81,8 +81,8 @@ class MovieControllerFamily extends Family<AsyncValue<TMDBMovie>> {
 }
 
 /// See also [MovieController].
-class MovieControllerProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<MovieController, TMDBMovie> {
+class MovieControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<
+    MovieController, TMDBMovieEntity> {
   /// See also [MovieController].
   MovieControllerProvider(
     this.movieId,
@@ -115,7 +115,7 @@ class MovieControllerProvider
   }
 
   @override
-  FutureOr<TMDBMovie> runNotifierBuild(
+  FutureOr<TMDBMovieEntity> runNotifierBuild(
     covariant MovieController notifier,
   ) {
     return notifier.build(

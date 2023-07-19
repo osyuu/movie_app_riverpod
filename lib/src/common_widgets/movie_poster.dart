@@ -1,7 +1,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app_riverpod/src/features/movies/model/tmdb_poster.dart';
+import 'package:movie_app_riverpod/src/features/movies/domain/entities/tmdb_poster.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MoviePoster extends StatelessWidget {

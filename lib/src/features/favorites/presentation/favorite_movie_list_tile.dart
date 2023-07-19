@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:movie_app_riverpod/src/common_widgets/movie_poster.dart';
 import 'package:movie_app_riverpod/src/common_widgets/top_gradient.dart';
-import 'package:movie_app_riverpod/src/features/favorites/model/favorite_movie.dart';
+import 'package:movie_app_riverpod/src/features/favorites/domain/entities/favorite_movie_entity.dart';
 
 class FavoriteMovieListTile extends StatelessWidget {
   const FavoriteMovieListTile({
@@ -15,7 +15,7 @@ class FavoriteMovieListTile extends StatelessWidget {
     this.action1,
   });
   final String? debugUuid;
-  final FavoriteMovie favorite;
+  final FavoriteMovieEntity favorite;
   final VoidCallback? onPressed;
   final VoidCallback onDismissed;
   final ValueSetter<BuildContext>? action1;

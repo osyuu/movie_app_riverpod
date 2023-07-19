@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app_riverpod/src/features/favorites/presentation/favorites_screen.dart';
-import 'package:movie_app_riverpod/src/features/movies/model/tmdb_movie.dart';
+import 'package:movie_app_riverpod/src/features/movies/domain/entities/tmdb_movie_entity.dart';
 import 'package:movie_app_riverpod/src/features/movies/presentation/movie_details/movie_details_screen.dart';
 import 'package:movie_app_riverpod/src/features/movies/presentation/movies/movies_search_screen.dart';
 import 'package:movie_app_riverpod/src/route/scaffold_with_bottom_nav_bar.dart';
@@ -46,7 +46,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                 name: AppRoute.movie.name,
                 pageBuilder: (context, state) {
                   final id = int.parse(state.pathParameters['id'] as String);
-                  final movie = state.extra as TMDBMovie?;
+                  final movie = state.extra as TMDBMovieEntity?;
                   return MaterialPage(
                     key: state.pageKey,
                     child: MovieDetailsScreen(movieId: id, movie: movie),
@@ -69,7 +69,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                   name: AppRoute.favorite.name,
                   pageBuilder: (context, state) {
                     final id = int.parse(state.pathParameters['id'] as String);
-                    final movie = state.extra as TMDBMovie?;
+                    final movie = state.extra as TMDBMovieEntity?;
                     return MaterialPage(
                       key: state.pageKey,
                       child: MovieDetailsScreen(movieId: id, movie: movie),

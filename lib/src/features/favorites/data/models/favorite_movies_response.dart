@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movie_app_riverpod/src/features/favorites/model/favorite_movie.dart';
+
+import 'favorite_movie.dart';
 
 part 'favorite_movies_response.freezed.dart';
 part 'favorite_movies_response.g.dart';

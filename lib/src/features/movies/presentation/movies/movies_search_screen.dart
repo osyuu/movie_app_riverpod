@@ -57,7 +57,6 @@ class MoviesSearchScreen extends ConsumerWidget {
                       pagination: MoviesPagination(page: page, query: query)
                     )
                   );
-
                   return moviesList.when(
                     error: (err, stack) => Text('Error $err'),
                     loading: () => const MovieListTileShimmer(),

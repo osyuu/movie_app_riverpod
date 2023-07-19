@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_riverpod/src/common_widgets/movie_poster.dart';
 import 'package:movie_app_riverpod/src/common_widgets/top_gradient.dart';
-import 'package:movie_app_riverpod/src/features/movies/model/tmdb_movie.dart';
+import 'package:movie_app_riverpod/src/features/movies/domain/entities/tmdb_movie_entity.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class MovieListTile extends StatelessWidget {
@@ -14,7 +14,7 @@ class MovieListTile extends StatelessWidget {
     this.onPressed,
     this.action1,
   });
-  final TMDBMovie movie;
+  final TMDBMovieEntity movie;
   final int? debugIndex;
   final VoidCallback? onPressed;
   final ValueSetter<BuildContext>? action1;

@@ -22,7 +22,7 @@ final moviesSearchTextProvider =
 );
 
 typedef _$MoviesSearchText = AutoDisposeNotifier<String>;
-String _$moviesControllerHash() => r'd4cb30bb26b618794a517af28b92282e5bfe79ba';
+String _$moviesControllerHash() => r'e12bef02f0726da0573b424328ea044c6171a6a6';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -46,10 +46,10 @@ class _SystemHash {
 }
 
 abstract class _$MoviesController
-    extends BuildlessAutoDisposeAsyncNotifier<List<TMDBMovie>> {
+    extends BuildlessAutoDisposeAsyncNotifier<List<TMDBMovieEntity>> {
   late final MoviesPagination pagination;
 
-  FutureOr<List<TMDBMovie>> build({
+  FutureOr<List<TMDBMovieEntity>> build({
     required MoviesPagination pagination,
   });
 }
@@ -59,7 +59,7 @@ abstract class _$MoviesController
 const moviesControllerProvider = MoviesControllerFamily();
 
 /// See also [MoviesController].
-class MoviesControllerFamily extends Family<AsyncValue<List<TMDBMovie>>> {
+class MoviesControllerFamily extends Family<AsyncValue<List<TMDBMovieEntity>>> {
   /// See also [MoviesController].
   const MoviesControllerFamily();
 
@@ -98,7 +98,7 @@ class MoviesControllerFamily extends Family<AsyncValue<List<TMDBMovie>>> {
 
 /// See also [MoviesController].
 class MoviesControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    MoviesController, List<TMDBMovie>> {
+    MoviesController, List<TMDBMovieEntity>> {
   /// See also [MoviesController].
   MoviesControllerProvider({
     required this.pagination,
@@ -131,7 +131,7 @@ class MoviesControllerProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  FutureOr<List<TMDBMovie>> runNotifierBuild(
+  FutureOr<List<TMDBMovieEntity>> runNotifierBuild(
     covariant MoviesController notifier,
   ) {
     return notifier.build(

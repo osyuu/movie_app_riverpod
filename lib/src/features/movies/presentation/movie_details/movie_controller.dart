@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:movie_app_riverpod/src/features/movies/data/movies_repository.dart';
-import 'package:movie_app_riverpod/src/features/movies/model/tmdb_movie.dart';
+import 'package:movie_app_riverpod/src/features/movies/domain/entities/tmdb_movie_entity.dart';
+import 'package:movie_app_riverpod/src/features/movies/domain/movies_repository.dart';
 import 'package:movie_app_riverpod/src/utils/cancel_token_ref.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -9,7 +9,7 @@ part 'movie_controller.g.dart';
 
 @riverpod
 class MovieController extends _$MovieController {
-  Future<TMDBMovie> movie({
+  Future<TMDBMovieEntity> movie({
     required int movieId,
   }) async {
     final moviesRepo = ref.watch(moviesRepositoryProvider);
@@ -18,7 +18,7 @@ class MovieController extends _$MovieController {
   }
 
   @override
-  FutureOr<TMDBMovie> build(int movieId) async {
+  FutureOr<TMDBMovieEntity> build(int movieId) async {
     return await movie(movieId: movieId);
   }
 }

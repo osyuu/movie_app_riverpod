@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movie_app_riverpod/src/features/movies/model/tmdb_movie.dart';
+import 'package:movie_app_riverpod/src/features/movies/data/models/tmdb_movie.dart';
 
 part 'favorite_movie.freezed.dart';
 part 'favorite_movie.g.dart';
